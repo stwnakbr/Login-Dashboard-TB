@@ -1,31 +1,26 @@
-const APPS_SCRIPT_URL = 'https://project-monitoring-dashboard.netlify.app/';
+const ALLOWED_EMAILS = [
+  'edi.sukro@gmail.com',
+  'ishlahuddin@gmail.com',
+  'zahrul.bjalil@gmail.com',
+  'destyanainggit@gmail.com',
+  'salyonoys@gmail.com',
+  'kikun.h@gmail.com',
+  'stwnakbr710@gmail.com'
+];
 
 function handleCredentialResponse(response) {
-  const jwt = response.credential;
-  const payload = parseJwt(jwt);
-  const email = payload.email;
+  const payload = parseJwt(response.credential);
+  const email = payload.email.toLowerCase();
 
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.allowed) {
-      // redirect ke dashboard
-      window.location.href = 'https://project-monitoring-dashboard.netlify.app/';
-    } else {
-      document.getElementById('error-msg').innerText =
-        'Akses ditolak. Email tidak terdaftar.';
-    }
-  })
-  .catch(() => {
+  if (ALLOWED_EMAILS.includes(email)) {
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userEmail', email);
+
+    window.location.href = 'https://project-monitoring-dashboard.netlify.app/';
+  } else {
     document.getElementById('error-msg').innerText =
-      'Terjadi kesalahan koneksi.';
-  });
+      'Akses ditolak. Email tidak terdaftar.';
+  }
 }
 
 function parseJwt(token) {
