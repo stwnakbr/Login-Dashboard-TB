@@ -1,17 +1,40 @@
-<div class="login-container">
-  <h2>Project Monitoring Dashboard</h2>
-  <p>Login menggunakan akun Google</p>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Project Monitoring Dashboard</title>
 
-  <div id="g_id_onload"
-       data-client_id="205340719312-keknreiseg281lfhj5hjtu981nh6gjlm.apps.googleusercontent.com"
-       data-callback="handleCredentialResponse">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Project Monitoring Dashboard</h2>
+    <p>Login menggunakan akun Google</p>
+
+    <!-- WAJIB ADA, TAPI TIDAK RENDER TOMBOL -->
+    <div id="g_id_onload"
+         data-client_id="205340719312-keknreiseg281lfhj5hjtu981nh6gjlm.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+
+    <!-- SATU-SATUNYA TOMBOL GOOGLE -->
+    <div class="g_id_signin"
+         data-type="standard"
+         data-size="large"
+         data-theme="outline"
+         data-text="signin_with">
+    </div>
+
+    <p id="error-msg"></p>
   </div>
 
-  <div class="g_id_signin"
-       data-type="standard"
-       data-size="large"
-       data-theme="outline">
-  </div>
-
-  <p id="error-msg"></p>
-</div>
+  <script src="script.js"></script>
+</body>
+</html>
