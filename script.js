@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = 'PASTE_WEB_APP_URL_DISINI';
+const APPS_SCRIPT_URL = 'https://project-monitoring-dashboard.netlify.app/';
 
 function handleCredentialResponse(response) {
   const jwt = response.credential;
