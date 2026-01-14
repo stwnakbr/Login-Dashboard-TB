@@ -6,7 +6,40 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- Google Identity Services --><!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Project Monitoring</title>
+
+  <link rel="stylesheet" href="style.css" />
+
   <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Project Monitoring Dashboard</h2>
+  <p>Login menggunakan akun Google</p>
+
+  <div id="g_id_onload"
+       data-client_id="205340719312-keknreiseg281lfhj5hjtu981nh6gjlm.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse">
+  </div>
+
+  <div class="g_id_signin"
+       data-type="standard"
+       data-size="large">
+  </div>
+
+  <p id="error-msg"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
